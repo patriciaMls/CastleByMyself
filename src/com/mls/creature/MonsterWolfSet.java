@@ -14,6 +14,16 @@ public class MonsterWolfSet {
 
     //增删改查
 
+    public MonsterWolf searchMonsterWolf(String id){
+        MonsterWolf monsterWolf = null;
+        for (MonsterWolf item : this.monsterWolves){
+            if (true == id.equals(item.getId())){
+                monsterWolf = item;
+                break;
+            }
+        }
+        return monsterWolf;
+    }
     public MonsterWolfSet() {
     }
 

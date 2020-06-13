@@ -20,6 +20,11 @@ public abstract class Weapon {
     public Weapon() {
     }
 
+    public Weapon(String id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     public Weapon(String id, String description, int damagePoints) {
         this.id = id;
         this.description = description;

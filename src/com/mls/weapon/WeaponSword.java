@@ -10,8 +10,13 @@ import com.mls.creature.Creature;
  * @modified By:
  */
 public class WeaponSword extends Weapon {
+    public WeaponSword(String id, String description, int damagePoints) {
+        super(id, description, damagePoints);
+    }
+
     @Override
     public void useWeapon(Creature enemyCreature) {
         enemyCreature.setHPValue(enemyCreature.getHPValue()+this.getDamagePoints());
     }
+
 }

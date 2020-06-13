@@ -1,7 +1,11 @@
 package com.mls;
 
+import com.mls.Util.Sense;
 import com.mls.creature.Creature;
+import com.mls.creature.MonsterWolf;
+import com.mls.creature.Person;
 import com.mls.weapon.Weapon;
+import com.mls.weapon.WeaponDagger;
 
 /**
  * @description:
@@ -12,12 +16,8 @@ import com.mls.weapon.Weapon;
  */
 public class Main {
     public static void main(String[] args) {
-        Creature creature=new Creature() {
-            @Override
-            public void useArticle(Weapon weapon, Creature targetCreature) {
-
-            }
-        };
-
+        Sense sense = new Sense();
+        sense.initSense();;
+        sense.play();
     }
 }

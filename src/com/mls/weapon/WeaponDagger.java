@@ -10,6 +10,10 @@ import com.mls.creature.Creature;
  * @modified By:
  */
 public class WeaponDagger extends Weapon {
+    public WeaponDagger(String id, String description, int damagePoints) {
+        super(id, description, damagePoints);
+    }
+
     //给敌方生物的生命值造成伤害
     //匕首dagger的使用方法，修改enemyCreature的HP
     @Override
