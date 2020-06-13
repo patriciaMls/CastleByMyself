@@ -14,9 +14,22 @@ import com.mls.creature.Person;
 public class UI {
     public void printWelcome(Person person){
         System.out.println();
-        System.out.println(person.getDescription()+"，欢迎来到砍怪游戏！");
-        System.out.println("这是一个好玩的游戏。");
+        System.out.println("亲爱的"+person.getDescription()+"玩家，欢迎来到RPG版砍怪游戏！");
+        Utils.pauseSeveralSecond(10);
+//        System.out.println("这是一个有趣且好玩的*采取了回合制*融入RPG元素*砍怪但不升级*低危易生存*游戏。");
+        System.out.printf("这是一个有趣且好玩的");
+        Utils.pauseSeveralSecond(5);
+        System.out.printf("*采取了回合制");
+        Utils.pauseSeveralSecond(5);
+        System.out.printf("*融入RPG元素");
+        Utils.pauseSeveralSecond(5);
+        System.out.printf("*砍怪但不升级");
+        Utils.pauseSeveralSecond(5);
+        System.out.printf("*低危易生存*游戏");
+        Utils.pauseSeveralSecond(10);
+        System.out.println();
         System.out.println("如果需要帮助，请输入 'help' 。");
+        Utils.pauseSeveralSecond(10);
         System.out.println();
     }
 
@@ -26,12 +39,24 @@ public class UI {
         for (MonsterWolf item : sense.getMonsterWolfSet().getMonsterWolves()){
             System.out.print(item.getId()+"("+item.getDescription()+"):"+item.getHPValue()+"  ");
         }
-        System.out.println("\n______________________________________________");
+        System.out.println("\n______________________________________________\n");
+    }
+
+    public void displayStausAll(Sense sense){
+        System.out.println("______________________________________________");
+        System.out.println("玩家 "+sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
+                "，攻击力："+(-sense.getPerson().getCurrentWeapon().getDamagePoints()));
+        System.out.println("敌方:");
+        for (MonsterWolf item : sense.getMonsterWolfSet().getMonsterWolves()){
+            System.out.println(item.getId()+"("+item.getDescription()+")HP:"+item.getHPValue()+"，攻击力："+(-item.getCurrentWeapon().getDamagePoints()));
+        }
+        System.out.println("______________________________________________\n");
+
     }
 
     public void displayHelpMsg(){
         System.out.println("----可使用的3条指令: chop(chop wolf1) bye help----");
-
+        Utils.pauseSeveralSecond(10);
     }
 
     public void displayBye(){
@@ -39,7 +64,14 @@ public class UI {
     }
 
     public void displayDamageMsg(Creature attackCreature, Creature targetCreature){
-        System.out.println(attackCreature.getDescription()+"对"+targetCreature.getDescription()+"进行攻击，造成"+attackCreature.getCurrentWeapon().getDamagePoints()+"伤害。");
+        System.out.println(attackCreature.getDescription()+" 对 "+targetCreature.getDescription()+
+                " 进行攻击，造成 "+attackCreature.getCurrentWeapon().getDamagePoints()+" 伤害。");
+        Utils.pauseSeveralSecond(10);
+    }
 
+    public void displayDamageFailMsg(Creature attackCreature, Creature targetCreature){
+        System.out.println(attackCreature.getDescription()+" 对 "+targetCreature.getDescription()+
+                " 进行攻击，攻击无效。");
+        Utils.pauseSeveralSecond(10);
     }
 }

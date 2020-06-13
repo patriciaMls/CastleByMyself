@@ -7,6 +7,8 @@ import com.mls.creature.Person;
 import com.mls.weapon.Weapon;
 import com.mls.weapon.WeaponDagger;
 
+import java.util.Random;
+
 /**
  * @description:
  * @author: Patricia
@@ -17,7 +19,8 @@ import com.mls.weapon.WeaponDagger;
 public class Main {
     public static void main(String[] args) {
         Sense sense = new Sense();
-        sense.initSense();;
+        sense.initSense();
         sense.play();
+
     }
 }

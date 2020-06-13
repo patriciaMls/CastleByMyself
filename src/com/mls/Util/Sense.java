@@ -4,6 +4,7 @@ import com.mls.creature.Creature;
 import com.mls.creature.MonsterWolf;
 import com.mls.creature.MonsterWolfSet;
 import com.mls.creature.Person;
+import com.mls.weapon.WeaponDagger;
 import com.mls.weapon.WeaponKnife;
 import com.mls.weapon.WeaponSword;
 
@@ -27,39 +28,111 @@ public class Sense {
 
     UI ui = new UI();
 
+    Scanner in = new Scanner(System.in);
 
     public void initSense(){
         initPerson();
-        initMonster();
+
+        modeSelection();
+
     }
 
     public void initPerson(){
+        System.out.println("游戏初始化完成，风趣好玩的RPG场景游戏即将开始……");
+        Utils.pauseSeveralSecond(10);
+        System.out.println("请输入你的角色名称：");
         this.person.setId("201901234");
-        this.person.setDescription("Tony");
+        String name = in.nextLine();
+        this.person.setDescription(name);
+
         this.person.setHPValue(300);
+        this.ui.printWelcome(this.person);
         this.person.setCurrentWeapon(new WeaponSword("w1","剑",-50));
     }
 
-    public void initMonster(){
+    public void modeSelection(){
+        System.out.println("接下来请选择关卡难度模式：地狱模式（v1），普通模式(v2)，简单模式(v3)");
+        Utils.pauseSeveralSecond(10);
+        System.out.println("请输入（v1、v2或v3）：");
+        String mode = in.nextLine();
+        if (mode.equals("v1") || mode.equals("V1")){
+            System.out.println("已选择地狱模式（v1）");
+            initMonsterVer1();
+        }else if (mode.equals("v2") || mode.equals("V2")){
+            System.out.println("已选择普通模式(v2)");
+            initMonsterVer2();
+        }else if (mode.equals("v3") || mode.equals("V3")){
+            System.out.println("已选择简单模式(v3)");
+            initMonsterVer3();
+        }else {
+            System.out.println("选择错误，默认简单模式（v2）");
+            initMonsterVer2();
+        }
+    }
+
+    public void initMonsterVer1(){
         this.wolf1.setId("wolf1");
         this.wolf1.setDescription("狼1");
         this.wolf1.setHPValue(100);
-        this.wolf1.setCurrentWeapon(new WeaponKnife("mw1","刀1",-30));
+        this.wolf1.setCurrentWeapon(new WeaponSword("mw1","剑1",-60));
 
         this.wolf2.setId("wolf2");
         this.wolf2.setDescription("狼2");
         this.wolf2.setHPValue(100);
-        this.wolf2.setCurrentWeapon(new WeaponKnife("mw2","刀2",-20));
+        this.wolf2.setCurrentWeapon(new WeaponSword("mw2","剑2",-55));
 
         this.wolf3.setId("wolf3");
         this.wolf3.setDescription("狼3");
         this.wolf3.setHPValue(100);
-        this.wolf3.setCurrentWeapon(new WeaponKnife("mw3","刀3",-25));
+        this.wolf3.setCurrentWeapon(new WeaponSword("mw3","剑3",-50));
 
         this.monsterWolfSet.getMonsterWolves().add(wolf1);
         this.monsterWolfSet.getMonsterWolves().add(wolf2);
         this.monsterWolfSet.getMonsterWolves().add(wolf3);
     }
+
+    public void initMonsterVer2(){
+        this.wolf1.setId("wolf1");
+        this.wolf1.setDescription("狼1");
+        this.wolf1.setHPValue(100);
+        this.wolf1.setCurrentWeapon(new WeaponKnife("mw1","刀1",-50));
+
+        this.wolf2.setId("wolf2");
+        this.wolf2.setDescription("狼2");
+        this.wolf2.setHPValue(100);
+        this.wolf2.setCurrentWeapon(new WeaponKnife("mw2","刀2",-45));
+
+        this.wolf3.setId("wolf3");
+        this.wolf3.setDescription("狼3");
+        this.wolf3.setHPValue(100);
+        this.wolf3.setCurrentWeapon(new WeaponKnife("mw3","刀3",-40));
+
+        this.monsterWolfSet.getMonsterWolves().add(wolf1);
+        this.monsterWolfSet.getMonsterWolves().add(wolf2);
+        this.monsterWolfSet.getMonsterWolves().add(wolf3);
+    }
+
+    public void initMonsterVer3(){
+        this.wolf1.setId("wolf1");
+        this.wolf1.setDescription("狼1");
+        this.wolf1.setHPValue(100);
+        this.wolf1.setCurrentWeapon(new WeaponDagger("mw1","匕首1",-40));
+
+        this.wolf2.setId("wolf2");
+        this.wolf2.setDescription("狼2");
+        this.wolf2.setHPValue(100);
+        this.wolf2.setCurrentWeapon(new WeaponDagger("mw2","匕首2",-35));
+
+        this.wolf3.setId("wolf3");
+        this.wolf3.setDescription("狼3");
+        this.wolf3.setHPValue(100);
+        this.wolf3.setCurrentWeapon(new WeaponDagger("mw3","匕首3",-30));
+
+        this.monsterWolfSet.getMonsterWolves().add(wolf1);
+        this.monsterWolfSet.getMonsterWolves().add(wolf2);
+        this.monsterWolfSet.getMonsterWolves().add(wolf3);
+    }
+
 
     public boolean judgeSuccess(){
         boolean flagPersonSuccess = false;
@@ -77,6 +150,14 @@ public class Sense {
         return flagPersonSuccess;
     }
 
+    public boolean judgeFailed(){
+        boolean flagPersonFailed = false;
+        if (this.getPerson().getHPValue()<=0){
+            flagPersonFailed=true;
+        }
+        return flagPersonFailed;
+    }
+
     public boolean judgeAttack(Creature attackeCreaure, Creature targetCreature){
         boolean flag = false;
         if (attackeCreaure.getHPValue()>0 && targetCreature.getHPValue()>0){
@@ -86,11 +167,15 @@ public class Sense {
     }
 
     public void play(){
-        this.ui.printWelcome(this.person);
+        System.out.println("--------------各位角色攻防汇总展示栏--------------");
+        Utils.pauseSeveralSecond(5);
+        this.ui.displayStausAll(this);
+        Utils.pauseSeveralSecond(10);
         this.ui.displayHelpMsg();
-        this.ui.displayStaus(this);
+
         Scanner in = new Scanner(System.in);
         while (true){
+            System.out.println("请输入指令：");
             String command = in.nextLine();
             String[] cmdLineItems = command.split(" ");
             String handler = cmdLineItems[0];
@@ -101,34 +186,44 @@ public class Sense {
                 String value = cmdLineItems[1];
                 MonsterWolf wolfBeAttacked = this.getMonsterWolfSet().searchMonsterWolf(value);
                 if (wolfBeAttacked != null){
+
+                    if (judgeAttack(wolfBeAttacked, this.getPerson())){
+                        if (Utils.randomMonsterChop()){
+                            wolfBeAttacked.useArticle(wolfBeAttacked.getCurrentWeapon(),this.getPerson());
+                            this.ui.displayDamageMsg(wolfBeAttacked, this.getPerson());
+                        }else {
+                            this.ui.displayDamageFailMsg(wolfBeAttacked, this.getPerson());
+                        }
+                    }else {
+                        System.out.println("该怪物已死亡。");
+                    }
+
                     if (judgeAttack(this.getPerson(),wolfBeAttacked)){
                         this.getPerson().useArticle(this.getPerson().getCurrentWeapon(),wolfBeAttacked);
                         this.ui.displayDamageMsg(this.getPerson(), wolfBeAttacked);
                     }else {
                         System.out.println("攻击失败，对象已死亡。");
                     }
-
-                    if (Utils.randomMonsterChop()){
-                        if (judgeAttack(wolfBeAttacked, this.getPerson())){
-                            wolfBeAttacked.useArticle(wolfBeAttacked.getCurrentWeapon(),this.getPerson());
-                            this.ui.displayDamageMsg(wolfBeAttacked, this.getPerson());
-                        }
-                    }else {
-                        System.out.println("攻击无效。");
-                    }
                 }else {
-                    System.out.println("error. here have not a MonsterWolf you want to attack.");
+                    System.out.println("选择有误，你想攻击的怪物不存在。");
                 }
 
                 this.ui.displayStaus(this);
+                Utils.pauseSeveralSecond(10);
             }else if (handler.equals("help")){
                 this.ui.displayHelpMsg();
             }else {
-                System.out.println("error command. please input command again.");
+                System.out.println("指令有误，请再次输入正确的指令。");
+                Utils.pauseSeveralSecond(10);
             }
 
             if (judgeSuccess()){
                 System.out.println("----YOU WIN ! ----");
+                System.out.println("请输入 'bye' 退出游戏");
+            }
+            if (judgeFailed()){
+                System.out.println("----YOU FAIL ! ----");
+                System.out.println("请输入 'bye' 退出游戏");
             }
         }
         in.close();

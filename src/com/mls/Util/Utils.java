@@ -13,11 +13,19 @@ public class Utils {
     public static boolean randomMonsterChop(){
         Random random = new Random();
         boolean flag = false;
-        int randomInt = random.nextInt()*10;
+        int randomInt = random.nextInt(10);
         //0-10 012 3456789
         if (randomInt >= 3){
             flag = true;
         }
         return flag;
-}
+    }
+
+    public static void pauseSeveralSecond(long second){
+        try {
+            Thread.sleep(second*100);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
 }
