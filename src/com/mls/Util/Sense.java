@@ -166,8 +166,35 @@ public class Sense {
         return flag;
     }
 
+    public void gameController(){
+        while (true){
+            Sense sense=new Sense();
+            sense.initSense();
+            sense.play();
+//            this.initSense();
+//            this.play();
+
+            System.out.println("----------------你想要退出还是再开一局？----------------");
+            System.out.println("退出（exit）/再来一局（next），请输入：");
+            String exitOrNot = in.nextLine();
+            if (exitOrNot.equals("exit")){
+                in.close();
+                System.exit(0);
+            }else if (exitOrNot.equals("next")){
+                continue;
+            }else {
+                System.out.println("输入有误，默认退出");
+                System.out.println("----------------欢迎尝试下一局----------------");
+                System.out.println("----------------SEE YOU AGAIN----------------");
+            }
+
+        }
+
+    }
+
+
     public void play(){
-        System.out.println("--------------各位角色攻防汇总展示栏--------------");
+        System.out.println("----------------各位角色攻防汇总展示栏----------------");
         Utils.pauseSeveralSecond(5);
         this.ui.displayStausAll(this);
         Utils.pauseSeveralSecond(10);
@@ -226,7 +253,7 @@ public class Sense {
             }
         }
 
-        in.close();
+        //in.close();
 
 
 //        System.exit(0);

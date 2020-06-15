@@ -43,7 +43,7 @@ public class UI {
     }
 
     public void displayStausAll(Sense sense){
-        System.out.println("______________________________________________");
+        System.out.println("__________________________________________________");
         System.out.println("玩家:");
         System.out.print(sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
                 "，攻击力："+(-sense.getPerson().getCurrentWeapon().getDamagePoints())+"，");
@@ -54,7 +54,7 @@ public class UI {
                     "，攻击力："+(-item.getCurrentWeapon().getDamagePoints())+"，");
             System.out.println("使用武器为"+item.getCurrentWeapon().getDescription());
         }
-        System.out.println("______________________________________________\n");
+        System.out.println("__________________________________________________\n");
 
     }
 
