@@ -171,8 +171,6 @@ public class Sense {
             Sense sense=new Sense();
             sense.initSense();
             sense.play();
-//            this.initSense();
-//            this.play();
 
             System.out.println("----------------你想要退出还是再开一局？----------------");
             System.out.println("退出（exit）/再来一局（next），请输入：");
@@ -187,9 +185,7 @@ public class Sense {
                 System.out.println("----------------欢迎尝试下一局----------------");
                 System.out.println("----------------SEE YOU AGAIN----------------");
             }
-
         }
-
     }
 
 
@@ -253,10 +249,6 @@ public class Sense {
             }
         }
 
-        //in.close();
-
-
-//        System.exit(0);
     }
 
     public Person getPerson() {
