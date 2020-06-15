@@ -14,7 +14,7 @@ import com.mls.creature.Person;
 public class UI {
     public void printWelcome(Person person){
         System.out.println();
-        System.out.println("亲爱的"+person.getDescription()+"玩家，欢迎来到RPG版砍怪游戏！");
+        System.out.println("亲爱的 "+person.getDescription()+" 玩家，欢迎来到RPG版砍怪游戏！");
         Utils.pauseSeveralSecond(10);
 //        System.out.println("这是一个有趣且好玩的*采取了回合制*融入RPG元素*砍怪但不升级*低危易生存*游戏。");
         System.out.printf("这是一个有趣且好玩的");
@@ -45,11 +45,14 @@ public class UI {
     public void displayStausAll(Sense sense){
         System.out.println("______________________________________________");
         System.out.println("玩家:");
-        System.out.println(sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
-                "，攻击力："+(-sense.getPerson().getCurrentWeapon().getDamagePoints()));
+        System.out.print(sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
+                "，攻击力："+(-sense.getPerson().getCurrentWeapon().getDamagePoints())+"，");
+        System.out.println("使用武器为"+sense.getPerson().getCurrentWeapon().getDescription());
         System.out.println("敌方:");
         for (MonsterWolf item : sense.getMonsterWolfSet().getMonsterWolves()){
-            System.out.println(item.getId()+"("+item.getDescription()+")HP:"+item.getHPValue()+"，攻击力："+(-item.getCurrentWeapon().getDamagePoints()));
+            System.out.print(item.getId()+"("+item.getDescription()+")HP:"+item.getHPValue()+
+                    "，攻击力："+(-item.getCurrentWeapon().getDamagePoints())+"，");
+            System.out.println("使用武器为"+item.getCurrentWeapon().getDescription());
         }
         System.out.println("______________________________________________\n");
 

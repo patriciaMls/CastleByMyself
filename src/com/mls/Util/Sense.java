@@ -47,7 +47,7 @@ public class Sense {
 
         this.person.setHPValue(300);
         this.ui.printWelcome(this.person);
-        this.person.setCurrentWeapon(new WeaponSword("w1","剑",-50));
+        this.person.setCurrentWeapon(new WeaponSword("w1","山寨版倚天屠狼剑",-50));
     }
 
     public void modeSelection(){
@@ -74,17 +74,17 @@ public class Sense {
         this.wolf1.setId("wolf1");
         this.wolf1.setDescription("狼1");
         this.wolf1.setHPValue(100);
-        this.wolf1.setCurrentWeapon(new WeaponSword("mw1","剑1",-60));
+        this.wolf1.setCurrentWeapon(new WeaponSword("mw1","超高校级的一把剑",-60));
 
         this.wolf2.setId("wolf2");
         this.wolf2.setDescription("狼2");
         this.wolf2.setHPValue(100);
-        this.wolf2.setCurrentWeapon(new WeaponSword("mw2","剑2",-55));
+        this.wolf2.setCurrentWeapon(new WeaponSword("mw2","稍逊一筹的一把剑",-55));
 
         this.wolf3.setId("wolf3");
         this.wolf3.setDescription("狼3");
         this.wolf3.setHPValue(100);
-        this.wolf3.setCurrentWeapon(new WeaponSword("mw3","剑3",-50));
+        this.wolf3.setCurrentWeapon(new WeaponSword("mw3","屠狼剑级的一把剑",-50));
 
         this.monsterWolfSet.getMonsterWolves().add(wolf1);
         this.monsterWolfSet.getMonsterWolves().add(wolf2);
@@ -95,17 +95,17 @@ public class Sense {
         this.wolf1.setId("wolf1");
         this.wolf1.setDescription("狼1");
         this.wolf1.setHPValue(100);
-        this.wolf1.setCurrentWeapon(new WeaponKnife("mw1","刀1",-50));
+        this.wolf1.setCurrentWeapon(new WeaponKnife("mw1","削铁如泥的一把刀",-50));
 
         this.wolf2.setId("wolf2");
         this.wolf2.setDescription("狼2");
         this.wolf2.setHPValue(100);
-        this.wolf2.setCurrentWeapon(new WeaponKnife("mw2","刀2",-45));
+        this.wolf2.setCurrentWeapon(new WeaponKnife("mw2","吹毛刃断的一把刀",-45));
 
         this.wolf3.setId("wolf3");
         this.wolf3.setDescription("狼3");
         this.wolf3.setHPValue(100);
-        this.wolf3.setCurrentWeapon(new WeaponKnife("mw3","刀3",-40));
+        this.wolf3.setCurrentWeapon(new WeaponKnife("mw3","切金断玉的一把刀",-40));
 
         this.monsterWolfSet.getMonsterWolves().add(wolf1);
         this.monsterWolfSet.getMonsterWolves().add(wolf2);
@@ -116,17 +116,17 @@ public class Sense {
         this.wolf1.setId("wolf1");
         this.wolf1.setDescription("狼1");
         this.wolf1.setHPValue(100);
-        this.wolf1.setCurrentWeapon(new WeaponDagger("mw1","匕首1",-40));
+        this.wolf1.setCurrentWeapon(new WeaponDagger("mw1","真的很不普通匕首",-40));
 
         this.wolf2.setId("wolf2");
         this.wolf2.setDescription("狼2");
         this.wolf2.setHPValue(100);
-        this.wolf2.setCurrentWeapon(new WeaponDagger("mw2","匕首2",-35));
+        this.wolf2.setCurrentWeapon(new WeaponDagger("mw2","一点也不普通匕首",-35));
 
         this.wolf3.setId("wolf3");
         this.wolf3.setDescription("狼3");
         this.wolf3.setHPValue(100);
-        this.wolf3.setCurrentWeapon(new WeaponDagger("mw3","匕首3",-30));
+        this.wolf3.setCurrentWeapon(new WeaponDagger("mw3","和普通无关系匕首",-30));
 
         this.monsterWolfSet.getMonsterWolves().add(wolf1);
         this.monsterWolfSet.getMonsterWolves().add(wolf2);
