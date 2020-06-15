@@ -44,7 +44,8 @@ public class UI {
 
     public void displayStausAll(Sense sense){
         System.out.println("______________________________________________");
-        System.out.println("玩家 "+sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
+        System.out.println("玩家:");
+        System.out.println(sense.getPerson().getDescription()+" HP:"+sense.getPerson().getHPValue()+
                 "，攻击力："+(-sense.getPerson().getCurrentWeapon().getDamagePoints()));
         System.out.println("敌方:");
         for (MonsterWolf item : sense.getMonsterWolfSet().getMonsterWolves()){
@@ -64,8 +65,21 @@ public class UI {
     }
 
     public void displayDamageMsg(Creature attackCreature, Creature targetCreature){
+
         System.out.println(attackCreature.getDescription()+" 对 "+targetCreature.getDescription()+
                 " 进行攻击，造成 "+attackCreature.getCurrentWeapon().getDamagePoints()+" 伤害。");
+        Utils.pauseSeveralSecond(10);
+
+        if (targetCreature instanceof MonsterWolf && targetCreature.getHPValue()==50){
+            displayWolfLastWordOfWolf1(targetCreature);
+            Utils.pauseSeveralSecond(5);
+            diaplayPlayerWord1(attackCreature);
+        }else if (targetCreature instanceof MonsterWolf && targetCreature.getHPValue()==0){
+            displayWolfLastWordOfWolf2(targetCreature);
+            Utils.pauseSeveralSecond(5);
+            diaplayPlayerWord2(attackCreature);
+        }
+
         Utils.pauseSeveralSecond(10);
     }
 
@@ -73,5 +87,20 @@ public class UI {
         System.out.println(attackCreature.getDescription()+" 对 "+targetCreature.getDescription()+
                 " 进行攻击，攻击无效。");
         Utils.pauseSeveralSecond(10);
+    }
+
+    public void diaplayPlayerWord1(Creature player){
+        System.out.println(player.getDescription()+": 哇呀呀呀——少废话！看你往哪里逃，接招！");
+    }
+
+    public void diaplayPlayerWord2(Creature player){
+        System.out.println(player.getDescription()+": 胜利必将是属于我的！哈哈哈——");
+    }
+
+    public void displayWolfLastWordOfWolf1(Creature creatureBeAttacked){
+        System.out.println(creatureBeAttacked.getDescription()+": 你为什么要攻击我？既然这样我也就不会对你客气了！喝啊！");
+    }
+    public void displayWolfLastWordOfWolf2(Creature creatureBeAttacked){
+        System.out.println(creatureBeAttacked.getDescription()+": 啊，我死了！你可真不留情面啊……");
     }
 }

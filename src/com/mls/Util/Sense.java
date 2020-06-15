@@ -184,9 +184,8 @@ public class Sense {
                 break;
             }else if (handler.equals("chop")){
                 String value = cmdLineItems[1];
-                MonsterWolf wolfBeAttacked = this.getMonsterWolfSet().searchMonsterWolf(value);
+                MonsterWolf wolfBeAttacked = this.getMonsterWolfSet().searchMonsterWolf(value);//获得攻击对象
                 if (wolfBeAttacked != null){
-
                     if (judgeAttack(wolfBeAttacked, this.getPerson())){
                         if (Utils.randomMonsterChop()){
                             wolfBeAttacked.useArticle(wolfBeAttacked.getCurrentWeapon(),this.getPerson());
@@ -226,8 +225,11 @@ public class Sense {
                 System.out.println("请输入 'bye' 退出游戏");
             }
         }
+
         in.close();
-        System.exit(0);
+
+
+//        System.exit(0);
     }
 
     public Person getPerson() {

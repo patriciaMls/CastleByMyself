@@ -17,6 +17,5 @@ public class Person extends Creature {
         }else {
             System.out.println(targetCreature.getDescription()+"已死亡，请另选攻击对象。");
         }
-
     }
 }
